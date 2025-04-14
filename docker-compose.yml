@@ -1,0 +1,49 @@
+services:
+  backend:
+    build:
+      context: .
+      dockerfile: Dockerfile  # Dockerfile for Python
+    container_name: r3-backend
+    command: uvicorn main:app --host 0.0.0.0 --port 8000 --reload
+    volumes:
+      - .:/app
+    ports:
+      - "8000:8000"
+    depends_on:
+      - db
+    networks:
+      - internal
+
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile  # Dockerfile for React/Vue/etc
+    container_name: r3-frontend
+    ports:
+      - "3000:80"
+    depends_on:
+      - backend
+    networks:
+      - internal
+
+  db:
+    container_name: r3-db
+    image: postgres:13.4
+    restart: on-failure
+    environment:
+      - POSTGRES_USER=r3dev
+      - POSTGRES_PASSWORD=pass
+      - POSTGRES_DB=testdb
+    ports:
+      - "5433:5432"
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U r3dev -d testdb"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+    networks:
+      - internal
+
+networks:
+  internal:
+    driver: bridge

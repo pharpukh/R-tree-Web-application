@@ -1,0 +1,29 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  /* Spacing and sizing */
+  --spacing-base: 1rem;
+  --spacing-lg: 2rem;
+  --border-radius: 0.5rem;
+
+  /* Colors */
+  --primary-color: #1890ff;
+  --secondary-bg: #f0f2f5;
+  --sidebar-bg: #d4e2f8;
+  --text-color: #333;
+
+  /* Table column widths */
+  --column-id: 4rem;
+  --column-objects: 6rem;
+  --column-dimensions: 8rem;
+  --column-method: 6rem;
+  --column-created: 10rem;
+}
+
+body {
+  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+  background-color: var(--secondary-bg);
+  color: var(--text-color);
+}

@@ -1,0 +1,48 @@
+.request-detail-container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 1rem;
+}
+
+.scrollable-list {
+  max-height: 250px;
+  overflow-y: auto;
+  word-wrap: break-word;
+  white-space: pre-wrap;
+  border: 1px solid #ddd;
+  padding: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.scrollable-list li {
+  list-style: none;
+  margin-bottom: 0.5rem;
+}
+
+@media (max-width: 600px) {
+  .request-detail-container {
+    padding: 0.5rem;
+  }
+  .request-detail-container h2 {
+    font-size: 1.2rem;
+  }
+}
+
+/* CSS Transition for image appearance */
+.fade-enter {
+  opacity: 0;
+}
+
+.fade-enter-active {
+  opacity: 1;
+  transition: opacity 600ms ease-in;
+}
+
+.fade-exit {
+  opacity: 1;
+}
+
+.fade-exit-active {
+  opacity: 0;
+  transition: opacity 600ms ease-in;
+}
